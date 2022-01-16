@@ -1,7 +1,9 @@
-import Head from "next/head"
 import { useContext } from "react"
+import Head from "next/head"
+import PropTypes from "prop-types"
+
 import { GlobalContext } from "../pages/_app"
-import { getStrapiMedia } from "../lib/media"
+import { getMediaURL } from "../lib/media"
 
 const Seo = ({ seo }) => {
   const { defaultSeo, siteName } = useContext(GlobalContext)
@@ -14,7 +16,7 @@ const Seo = ({ seo }) => {
     // Add title suffix
     metaTitle: `${seoWithDefaults.metaTitle} | ${siteName}`,
     // Get full image URL
-    shareImage: getStrapiMedia(seoWithDefaults.shareImage),
+    shareImage: getMediaURL(seoWithDefaults.shareImage),
   }
 
   return (
@@ -44,6 +46,10 @@ const Seo = ({ seo }) => {
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
   )
+}
+
+Seo.propTypes = {
+  seo: PropTypes.object,
 }
 
 export default Seo

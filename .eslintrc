@@ -1,11 +1,12 @@
 {
-  "extends": [
-    "next",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
-  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "next", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error"
   }

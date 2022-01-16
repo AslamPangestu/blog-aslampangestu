@@ -1,11 +1,14 @@
 import { fetchAPI } from "../../lib/api"
+
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 
-const Category = ({ category }) => {
+const Article = ({ article }) => {
   const seo = {
-    metaTitle: category.name,
-    metaDescription: `All ${category.name} articles`,
+    metaTitle: article.title,
+    metaDescription: article.description,
+    shareImage: article.image,
+    article: true,
   }
 
   return (
@@ -13,21 +16,21 @@ const Category = ({ category }) => {
       <Seo seo={seo} />
       <Layout>
         <div>
-          <h1>Category Name</h1>
-          <div>Articles</div>
+          <h1>Title</h1>
         </div>
+        <div>Content</div>
       </Layout>
     </>
   )
 }
 
 export const getStaticPaths = async () => {
-  const categories = await fetchAPI("/article-category")
+  const articles = await fetchAPI("/articles")
 
   return {
-    paths: categories.map((category) => ({
+    paths: articles.map((article) => ({
       params: {
-        slug: category.slug,
+        slug: article.slug,
       },
     })),
     fallback: false,
@@ -35,12 +38,12 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const category = (await fetchAPI(`/article-category?slug=${params.slug}`))[0]
+  const articles = await fetchAPI(`/articles?slug=${params.slug}`)
 
   return {
-    props: { category },
+    props: { article: articles[0] },
     revalidate: 1,
   }
 }
 
-export default Category
+export default Article

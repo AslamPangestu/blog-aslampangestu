@@ -1,35 +1,51 @@
-import React from "react"
-import Articles from "../components/articles"
+import PropTypes from "prop-types"
+
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+
+import {
+  HeroContainer,
+  ProjectContainer,
+  SkillContainer,
+} from "../containers/Homepage"
+
 import { fetchAPI } from "../lib/api"
 
-const Home = ({ articles, categories, homepage }) => {
+const Home = ({ hero, projects, skills }) => {
   return (
-    <Layout categories={categories}>
-      <Seo seo={homepage.seo} />
-      <div className="uk-section">
-        <div className="uk-container uk-container-large">
-          <h1>{homepage.hero.title}</h1>
-          <Articles articles={articles} />
-        </div>
-      </div>
-    </Layout>
+    <>
+      <Seo />
+      <Layout>
+        <HeroContainer data={hero} />
+        <SkillContainer data={skills} />
+        <ProjectContainer data={projects} />
+      </Layout>
+    </>
   )
 }
 
 export async function getStaticProps() {
-  // Run API calls in parallel
-  const [articles, categories, homepage] = await Promise.all([
-    fetchAPI("/articles"),
-    fetchAPI("/categories"),
-    fetchAPI("/homepage"),
-  ])
+  const response = await fetchAPI("/homepage/all")
 
   return {
-    props: { articles, categories, homepage },
+    props: {
+      hero: {
+        fullname: response.homepage.fullName,
+        description: response.homepage.description,
+        profileImage: response.homepage.profileImage,
+        contacts: response.contacts,
+      },
+      projects: response.projects,
+      skills: response.skills,
+    },
     revalidate: 1,
   }
+}
+
+Home.propTypes = {
+  hero: PropTypes.object,
+  projects: PropTypes.array,
+  skills: PropTypes.array,
 }
 
 export default Home

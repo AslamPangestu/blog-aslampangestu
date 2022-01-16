@@ -1,12 +1,19 @@
+import { createContext } from "react"
 import App from "next/app"
 import Head from "next/head"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
+import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons"
+
 import "../assets/css/style.css"
-import { createContext } from "react"
+
 import { fetchAPI } from "../lib/api"
-import { getStrapiMedia } from "../lib/media"
+import { getMediaURL } from "../lib/media"
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
+
+library.add(faSun, faMoon, faLinkedin, faInstagram)
 
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps
@@ -14,7 +21,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href={getStrapiMedia(global.favicon)} />
+        <link rel="shortcut icon" href={getMediaURL(global.favicon)} />
       </Head>
       <GlobalContext.Provider value={global}>
         <Component {...pageProps} />
