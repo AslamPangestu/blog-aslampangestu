@@ -1,11 +1,11 @@
 import PropTypes from "prop-types"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import NextImage from "../../components/image"
-import Button from "../../components/button"
+import NextImage from "components/image"
 
 const HeroSection = ({ data }) => {
   return (
-    <div className="py-16 px-64">
+    <div className="py-11 px-40">
       <div className="flex flex-col items-center my-2">
         <NextImage
           image={data.profileImage}
@@ -14,21 +14,24 @@ const HeroSection = ({ data }) => {
         />
       </div>
       <div className="flex flex-col items-center text-center">
-        <span className="my-2 space-x-2">
+        <span className="my-2 space-x-4">
           {data.contacts.map((item) => (
-            <Button
-              className="rounded bg-white dark:bg-black hover:bg-black/10 dark:hover:bg-black/75 text-red-800"
+            <a
               key={item._id}
-              link={item.url}
-              type="link"
-              icon={["fab", item.iconName]}
-              iconSize="lg"
-              name={item.name}
-            />
+              name={`${item.name}-link`}
+              href={item.url}
+              className="rounded text-red"
+            >
+              <FontAwesomeIcon icon={["fab", item.iconName]} size="lg" />
+            </a>
           ))}
         </span>
-        <span className="font-bold text-xl">{data.fullname}</span>
-        <span className="my-2 leading-relaxed">{data.description}</span>
+        <span className="font-bold text-xl text-black dark:text-white">
+          {data.fullname}
+        </span>
+        <span className="my-2 leading-relaxed text-black dark:text-white">
+          {data.description}
+        </span>
       </div>
     </div>
   )

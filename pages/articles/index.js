@@ -1,9 +1,9 @@
 import PropTypes from "prop-types"
 
-import { fetchAPI } from "../../lib/api"
+import { fetchAPI } from "lib/api"
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from "components/layout"
+import Seo from "components/seo"
 
 const Article = ({ articles }) => {
   return (

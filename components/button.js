@@ -18,6 +18,8 @@ const validURL = (str) => {
 
 const Button = ({
   className,
+  activeColor,
+  inactiveColor,
   name,
   type,
   icon,
@@ -31,8 +33,9 @@ const Button = ({
 
   if (type === "link") {
     const isActive = router.pathname === link
+    classNames.push("font-bold")
     if (isActive) {
-      classNames.push("underline font-bold")
+      classNames.push(activeColor)
       const joinClassName = classNames.join(" ")
       return (
         <div name={`${name}-link`} className={joinClassName}>
@@ -41,7 +44,7 @@ const Button = ({
         </div>
       )
     }
-    classNames.push("hover:underline hover:font-bold")
+    classNames.push(inactiveColor)
     const joinClassName = classNames.join(" ")
     if (validURL(link)) {
       return (
@@ -76,6 +79,8 @@ const Button = ({
 
 Button.propTypes = {
   className: PropTypes.string,
+  activeColor: PropTypes.string,
+  inactiveColor: PropTypes.string,
   iconSize: PropTypes.string,
   name: PropTypes.string,
   icon: PropTypes.PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
@@ -90,7 +95,9 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: "",
-  iconSize: "md",
+  activeColor: "",
+  inactiveColor: "",
+  iconSize: "xs",
   icon: "",
   type: "button",
   link: "",

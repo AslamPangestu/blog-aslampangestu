@@ -1,15 +1,15 @@
 import PropTypes from "prop-types"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "components/layout"
+import Seo from "components/seo"
 
 import {
   HeroContainer,
   ProjectContainer,
   SkillContainer,
-} from "../containers/Homepage"
+} from "containers/Homepage"
 
-import { fetchAPI } from "../lib/api"
+import { fetchAPI } from "lib/api"
 
 const Home = ({ hero, projects, skills }) => {
   return (
@@ -18,7 +18,7 @@ const Home = ({ hero, projects, skills }) => {
       <Layout>
         <HeroContainer data={hero} />
         <SkillContainer data={skills} />
-        <ProjectContainer data={projects} />
+        <ProjectContainer data={projects} testImage={hero.profileImage} />
       </Layout>
     </>
   )
@@ -35,7 +35,7 @@ export async function getStaticProps() {
         profileImage: response.homepage.profileImage,
         contacts: response.contacts,
       },
-      projects: response.projects,
+      projects: response.skills,
       skills: response.skills,
     },
     revalidate: 1,

@@ -2,18 +2,32 @@ import { createContext } from "react"
 import App from "next/app"
 import Head from "next/head"
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
+import {
+  faSun,
+  faMoon,
+  faServer,
+  faMobileAlt,
+  faDesktop,
+} from "@fortawesome/free-solid-svg-icons"
 import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
-import "../assets/css/style.css"
+import "assets/css/style.css"
 
-import { fetchAPI } from "../lib/api"
-import { getMediaURL } from "../lib/media"
+import { fetchAPI } from "lib/api"
+import { getMediaURL } from "lib/media"
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
 
-library.add(faSun, faMoon, faLinkedin, faInstagram)
+library.add(
+  faSun,
+  faMoon,
+  faLinkedin,
+  faInstagram,
+  faServer,
+  faMobileAlt,
+  faDesktop
+)
 
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps
