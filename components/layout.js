@@ -63,7 +63,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="bg-white dark:bg-black">
-      <header className="flex justify-between items-center px-36 py-2 sticky top-0 z-50 border-b border-black/10">
+      <header className="flex justify-between items-center px-36 py-2 sticky top-0 z-10 border-b border-black/10 dark:border-white/10 bg-opacity-60 backdrop-filter backdrop-blur-lg">
         <nav>
           <Link href="/">AP</Link>
         </nav>
@@ -80,7 +80,7 @@ const Layout = ({ children }) => {
         <DarkModeButton />
       </header>
       <div className="px-36 py-4">{children}</div>
-      <footer className="flex flex-row justify-center px-36 py-4 border-t border-black/10">
+      <footer className="flex flex-row justify-center px-36 py-4 border-t border-black/10 dark:border-white/10">
         <span className="text-black dark:text-white">
           ©{new Date().getFullYear()}
           <strong> Muhammad Aslam Pangestu Idham</strong>

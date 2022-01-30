@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 import { getMediaURL } from "../lib/media"
 
-const Image = ({ image, className, imageName }) => {
+const Image = ({ image, className, imageClass, objectFit, layout }) => {
   const src = () => {
     return getMediaURL(image.url)
   }
@@ -11,11 +11,11 @@ const Image = ({ image, className, imageName }) => {
   return (
     <div className={className}>
       <NextImage
-        className={imageName}
-        layout="responsive"
+        className={imageClass}
+        layout={layout}
         width={image.width}
         height={image.height}
-        objectFit="contain"
+        objectFit={objectFit}
         src={src()}
         alt={image.alternativeText || ""}
       />
@@ -26,7 +26,14 @@ const Image = ({ image, className, imageName }) => {
 Image.propTypes = {
   image: PropTypes.object,
   className: PropTypes.string,
-  imageName: PropTypes.string,
+  imageClass: PropTypes.string,
+  objectFit: PropTypes.string,
+  layout: PropTypes.string,
+}
+
+Image.defaultProps = {
+  objectFit: "contain",
+  layout: "responsive",
 }
 
 export default Image

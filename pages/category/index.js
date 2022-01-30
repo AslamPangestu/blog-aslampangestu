@@ -20,7 +20,7 @@ const Category = ({ categories }) => {
 }
 
 export const getStaticProps = async () => {
-  const categories = await fetchAPI("/article-category")
+  const categories = await fetchAPI("/article-categories")
 
   return {
     props: { categories },

@@ -22,7 +22,7 @@ const Category = ({ category }) => {
 }
 
 export const getStaticPaths = async () => {
-  const categories = await fetchAPI("/article-category")
+  const categories = await fetchAPI("/article-categories")
 
   return {
     paths: categories.map((category) => ({

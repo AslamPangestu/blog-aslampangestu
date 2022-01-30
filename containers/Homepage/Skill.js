@@ -10,9 +10,9 @@ const SkillSection = ({ data }) => {
       <h2 className="my-2 font-bold text-xl text-black dark:text-white">
         {title}
       </h2>
-      <span className="my-2 text-sm text-justify text-black/80 dark:text-white/80">
+      <p className="my-2 text-sm text-justify text-black/80 dark:text-white/80">
         {description}
-      </span>
+      </p>
     </div>
   )
   return (
@@ -20,7 +20,7 @@ const SkillSection = ({ data }) => {
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
         Skills
       </h1>
-      <div className="flex flex-row justify-center flex-wrap py-4">
+      <div className="flex flex-row justify-center flex-wrap pt-4">
         {data.map((item) => (
           <SkillItem
             key={item._id}

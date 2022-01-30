@@ -1,33 +1,98 @@
+import { useState } from "react"
 import PropTypes from "prop-types"
 
 import NextImage from "components/image"
+import Card from "components/card"
+import Modal from "components/modal"
 
-const ProjectSection = ({ data, testImage }) => {
-  const ProjectItem = ({ image, title, description }) => {
-    const shorterDescription = (text = "") => {
-      let finalText = text
-      if (text.length >= 100) {
-        const splitText = text.split(" ")
-        finalText = splitText.slice(16).join(" ")
-      }
-      return `${finalText} ...`
+const ProjectSection = ({ data }) => {
+  const [modalData, setModalData] = useState(null)
+
+  const projectYear = (start, end) => {
+    const yearEnd = !end ? "Now" : end
+    return ` (${start} - ${yearEnd})`
+  }
+
+  const showModal = (data = null) => {
+    setModalData(data)
+    showHideScrollBar(data)
+  }
+
+  const showHideScrollBar = (data) => {
+    if (data) {
+      document.documentElement.classList.add("overflow-hidden")
+    } else {
+      document.documentElement.classList.remove("overflow-hidden")
     }
-    return (
-      <div className="m-8 w-72 border rounded-xl border-black/80 dark:border-white/80 cursor-pointer">
-        <div className="flex flex-col">
-          <NextImage image={testImage} />
+  }
+
+  const ProjectModal = ({ onClose }) => (
+    <Modal onClose={onClose}>
+      <div className="bg-white dark:bg-black">
+        <div className="flex flex-col border-b border-black/25 dark:border-white/25">
+          <NextImage image={modalData.image} />
         </div>
-        <div className="px-8 py-4">
-          <h2 className="mb-2 font-bold text-xl text-black dark:text-white">
-            {title}
+        <div className="p-4">
+          <h2 className="font-bold text-xl text-black dark:text-white">
+            {modalData.title}
+            <span className="text-xs text-black/80 dark:text-white/80">
+              {projectYear(modalData.yearStart, modalData.yearEnd)}
+            </span>
           </h2>
-          <span className="text-sm text-justify text-black/80 dark:text-white/80">
-            {shorterDescription(description)}
-          </span>
+          <div className="flex flex-col my-4 ">
+            <span className="text-sm text-black/80 dark:text-white/80">
+              {modalData.clientName}
+            </span>
+            <span className="text-sm text-black/80 dark:text-white/80">
+              {modalData.projectCategory.name}
+            </span>
+            <span className="text-sm text-black/80 dark:text-white/80">
+              {modalData.projectRole.name}
+            </span>
+            <span className="text-sm text-black/80 dark:text-white/80">
+              {modalData.workPlace.name}
+            </span>
+          </div>
+          <p className="text-sm text-black/80 dark:text-white/80 text-justify">
+            {modalData.description}
+          </p>
         </div>
       </div>
+    </Modal>
+  )
+
+  const ProjectItem = ({ data, onClick }) => {
+    const { image, title, clientName } = data
+
+    return (
+      <Card
+        className="m-8 inline-block rounded-lg sm:max-w-lg w-72"
+        onClick={onClick}
+      >
+        <div className="flex flex-col relative border-b border-black/25 dark:border-white/25">
+          <NextImage
+            image={image}
+            imageClass="rounded-t-lg"
+            className="w-72 h-72"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="p-4">
+          <h2 className="font-bold text-xl text-black dark:text-white">
+            {title}
+            <span className="text-xs text-black/80 dark:text-white/80">
+              {projectYear(data.yearStart, data.yearEnd)}
+            </span>
+          </h2>
+          <span className="text-sm text-black/80 dark:text-white/80">
+            {clientName}
+          </span>
+        </div>
+      </Card>
     )
   }
+
   return (
     <div className="flex flex-col py-11">
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
@@ -37,18 +102,18 @@ const ProjectSection = ({ data, testImage }) => {
         {data.map((item) => (
           <ProjectItem
             key={item._id}
-            title={item.title}
-            description={item.description}
+            data={item}
+            onClick={() => showModal(item)}
           />
         ))}
       </div>
+      {modalData && <ProjectModal onClose={() => showModal()} />}
     </div>
   )
 }
 
 ProjectSection.propTypes = {
   data: PropTypes.array,
-  testImage: PropTypes.object,
 }
 
 export default ProjectSection

@@ -1,12 +1,25 @@
-import Link from "next/link"
 import PropTypes from "prop-types"
 
-const Card = ({ article }) => {
-  return <Link href={`/article/${article.slug}`}>Card</Link>
+const Card = ({ children, className, onClick }) => {
+  let classNames = [
+    "border border-black/25 dark:border-white/25 cursor-pointer",
+    className,
+  ]
+  const joinClassName = classNames.join(" ")
+  return (
+    <div className={joinClassName} onClick={onClick}>
+      {children}
+    </div>
+  )
 }
 
 Card.propTypes = {
-  data: PropTypes.object,
+  className: PropTypes.string,
+  children: PropTypes.PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  onClick: PropTypes.func,
 }
 
 export default Card

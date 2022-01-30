@@ -18,7 +18,7 @@ const Home = ({ hero, projects, skills }) => {
       <Layout>
         <HeroContainer data={hero} />
         <SkillContainer data={skills} />
-        <ProjectContainer data={projects} testImage={hero.profileImage} />
+        <ProjectContainer data={projects} />
       </Layout>
     </>
   )
@@ -35,7 +35,7 @@ export async function getStaticProps() {
         profileImage: response.homepage.profileImage,
         contacts: response.contacts,
       },
-      projects: response.skills,
+      projects: response.projects,
       skills: response.skills,
     },
     revalidate: 1,

@@ -9,7 +9,7 @@ const HeroSection = ({ data }) => {
       <div className="flex flex-col items-center my-2">
         <NextImage
           image={data.profileImage}
-          imageName="rounded-lg"
+          imageClass="rounded-lg"
           className="w-56 h-56"
         />
       </div>
