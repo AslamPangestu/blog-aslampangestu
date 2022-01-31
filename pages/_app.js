@@ -8,6 +8,8 @@ import {
   faServer,
   faMobileAlt,
   faDesktop,
+  faTimes,
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
@@ -26,7 +28,9 @@ library.add(
   faInstagram,
   faServer,
   faMobileAlt,
-  faDesktop
+  faDesktop,
+  faTimes,
+  faGlobe
 )
 
 const MyApp = ({ Component, pageProps }) => {

@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import NextImage from "components/image"
 import Card from "components/card"
 import Modal from "components/modal"
+import Button from "components/button"
 
 const ProjectSection = ({ data }) => {
   const [modalData, setModalData] = useState(null)
@@ -26,40 +27,67 @@ const ProjectSection = ({ data }) => {
     }
   }
 
-  const ProjectModal = ({ onClose }) => (
-    <Modal onClose={onClose}>
-      <div className="bg-white dark:bg-black">
-        <div className="flex flex-col border-b border-black/25 dark:border-white/25">
-          <NextImage image={modalData.image} />
-        </div>
-        <div className="p-4">
-          <h2 className="font-bold text-xl text-black dark:text-white">
-            {modalData.title}
-            <span className="text-xs text-black/80 dark:text-white/80">
-              {projectYear(modalData.yearStart, modalData.yearEnd)}
-            </span>
-          </h2>
-          <div className="flex flex-col my-4 ">
-            <span className="text-sm text-black/80 dark:text-white/80">
-              {modalData.clientName}
-            </span>
-            <span className="text-sm text-black/80 dark:text-white/80">
-              {modalData.projectCategory.name}
-            </span>
-            <span className="text-sm text-black/80 dark:text-white/80">
-              {modalData.projectRole.name}
-            </span>
-            <span className="text-sm text-black/80 dark:text-white/80">
-              {modalData.workPlace.name}
-            </span>
+  const ProjectModal = ({ onClose }) => {
+    const SUBHEADERS = [
+      { label: "Client", value: modalData.clientName },
+      { label: "Role", value: modalData.projectRole.name },
+      {
+        label: "Work",
+        value: `${modalData.workPlace.name} (${modalData.projectCategory.name})`,
+      },
+    ]
+    return (
+      <Modal onClose={onClose} showClose={true}>
+        <div className="bg-white dark:bg-black relative">
+          <div className="flex flex-col border-b border-black/25 dark:border-white/25">
+            <NextImage image={modalData.image} />
           </div>
-          <p className="text-sm text-black/80 dark:text-white/80 text-justify">
-            {modalData.description}
-          </p>
+          <div className="p-4">
+            <div className="flex flex-row justify-between items-center">
+              <h2 className="font-bold text-xl text-black dark:text-white">
+                {modalData.title}
+                <span className="text-xs text-black/80 dark:text-white/80">
+                  {projectYear(modalData.yearStart, modalData.yearEnd)}
+                </span>
+              </h2>
+              {modalData.url && (
+                <Button
+                  name="close"
+                  className="text-green hover:bg-black/10 dark:hover:bg-white/10  rounded-lg"
+                  icon="globe"
+                  iconSize="lg"
+                  link={modalData.url}
+                  type="link"
+                >
+                  Visit
+                </Button>
+              )}
+            </div>
+            <table className="my-2">
+              <tbody>
+                {SUBHEADERS.map((item) => (
+                  <tr key={item.label}>
+                    <td className="text-sm font-bold text-black/80 dark:text-white/80">
+                      {item.label}
+                    </td>
+                    <td className="text-sm text-black/80 dark:text-white/80 px-2">
+                      :
+                    </td>
+                    <td className="text-sm text-black/80 dark:text-white/80">
+                      {item.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="text-sm text-black/80 dark:text-white/80 text-justify">
+              {modalData.description}
+            </p>
+          </div>
         </div>
-      </div>
-    </Modal>
-  )
+      </Modal>
+    )
+  }
 
   const ProjectItem = ({ data, onClick }) => {
     const { image, title, clientName } = data

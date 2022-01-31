@@ -43,6 +43,7 @@ const Layout = ({ children }) => {
     }, [])
     return (
       <Button
+        name="darkMode"
         className="rounded hover:bg-black/10 dark:hover:bg-white/10 text-yellow"
         icon={darkModeIcon}
         onClick={setUIMode}

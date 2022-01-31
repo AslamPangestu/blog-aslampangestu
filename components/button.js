@@ -23,6 +23,7 @@ const Button = ({
   name,
   type,
   icon,
+  iconPosition,
   iconSize,
   link,
   children,
@@ -39,8 +40,13 @@ const Button = ({
       const joinClassName = classNames.join(" ")
       return (
         <div name={`${name}-link`} className={joinClassName}>
-          {icon && <FontAwesomeIcon icon={icon} size={iconSize} />}
-          {children}
+          {icon && iconPosition === "left" && (
+            <FontAwesomeIcon icon={icon} size={iconSize} />
+          )}
+          {children && <span className="px-2">{children}</span>}
+          {icon && iconPosition === "right" && (
+            <FontAwesomeIcon icon={icon} size={iconSize} />
+          )}
         </div>
       )
     }
@@ -48,17 +54,33 @@ const Button = ({
     const joinClassName = classNames.join(" ")
     if (validURL(link)) {
       return (
-        <a name={`${name}-link`} href={link} className={joinClassName}>
-          {icon && <FontAwesomeIcon icon={icon} size={iconSize} />}
-          {children}
+        <a
+          name={`${name}-link`}
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={joinClassName}
+        >
+          {icon && iconPosition === "left" && (
+            <FontAwesomeIcon icon={icon} size={iconSize} />
+          )}
+          {children && <span className="px-2">{children}</span>}
+          {icon && iconPosition === "right" && (
+            <FontAwesomeIcon icon={icon} size={iconSize} />
+          )}
         </a>
       )
     }
     return (
       <Link name={`${name}-link`} href={link}>
         <a className={joinClassName}>
-          {icon && <FontAwesomeIcon icon={icon} size={iconSize} />}
-          {children}
+          {icon && iconPosition === "left" && (
+            <FontAwesomeIcon icon={icon} size={iconSize} />
+          )}
+          {children && <span className="px-2">{children}</span>}
+          {icon && iconPosition === "right" && (
+            <FontAwesomeIcon icon={icon} size={iconSize} />
+          )}
         </a>
       </Link>
     )
@@ -71,8 +93,13 @@ const Button = ({
       type={type}
       onClick={onClick}
     >
-      {icon && <FontAwesomeIcon icon={icon} size={iconSize} />}
-      {children}
+      {icon && iconPosition === "left" && (
+        <FontAwesomeIcon icon={icon} size={iconSize} />
+      )}
+      {children && <span className="px-2">{children}</span>}
+      {icon && iconPosition === "right" && (
+        <FontAwesomeIcon icon={icon} size={iconSize} />
+      )}
     </button>
   )
 }
@@ -84,6 +111,7 @@ Button.propTypes = {
   iconSize: PropTypes.string,
   name: PropTypes.string,
   icon: PropTypes.PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  iconPosition: PropTypes.string,
   type: PropTypes.string,
   link: PropTypes.string,
   children: PropTypes.PropTypes.oneOfType([
@@ -99,6 +127,7 @@ Button.defaultProps = {
   inactiveColor: "",
   iconSize: "xs",
   icon: "",
+  iconPosition: "left",
   type: "button",
   link: "",
 }
