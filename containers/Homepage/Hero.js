@@ -1,7 +1,8 @@
+import dynamic from "next/dynamic"
 import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import NextImage from "components/image"
+const NextImage = dynamic(() => import("components/image"))
 
 const HeroSection = ({ data }) => {
   return (

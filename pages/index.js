@@ -1,7 +1,8 @@
+import dynamic from "next/dynamic"
 import PropTypes from "prop-types"
 
-import Layout from "components/layout"
-import Seo from "components/seo"
+const Layout = dynamic(() => import("components/layout"))
+const Seo = dynamic(() => import("components/seo"))
 
 import {
   HeroContainer,

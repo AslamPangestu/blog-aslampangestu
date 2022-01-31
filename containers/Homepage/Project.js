@@ -1,10 +1,11 @@
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import PropTypes from "prop-types"
 
-import NextImage from "components/image"
-import Card from "components/card"
-import Modal from "components/modal"
-import Button from "components/button"
+const NextImage = dynamic(() => import("components/image"))
+const Card = dynamic(() => import("components/card"))
+const Modal = dynamic(() => import("components/modal"))
+const Button = dynamic(() => import("components/button"))
 
 const ProjectSection = ({ data }) => {
   const [modalData, setModalData] = useState(null)

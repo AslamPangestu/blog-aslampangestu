@@ -1,4 +1,5 @@
 import { createContext } from "react"
+import dynamic from "next/dynamic"
 import App from "next/app"
 import Head from "next/head"
 import { library } from "@fortawesome/fontawesome-svg-core"
@@ -17,6 +18,14 @@ import "assets/css/style.css"
 
 import { fetchAPI } from "lib/api"
 import { getMediaURL } from "lib/media"
+
+// https://dev.to/vvo/show-a-top-progress-bar-on-fetch-and-router-events-in-next-js-4df3
+const TopProgressBar = dynamic(
+  () => {
+    return import("components/nprogress")
+  },
+  { ssr: false }
+)
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
@@ -42,6 +51,7 @@ const MyApp = ({ Component, pageProps }) => {
         <link rel="shortcut icon" href={getMediaURL(global.favicon)} />
       </Head>
       <GlobalContext.Provider value={global}>
+        <TopProgressBar />
         <Component {...pageProps} />
       </GlobalContext.Provider>
     </>
