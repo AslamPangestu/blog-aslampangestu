@@ -58,6 +58,7 @@ const Layout = ({ children }) => {
     }, [])
     return (
       <Button
+        aria-label="darkMode"
         name="darkMode"
         className={joinClassName}
         icon={darkModeIcon}
@@ -75,7 +76,7 @@ const Layout = ({ children }) => {
             link={item.link}
             type="link"
             activeColor="text-black dark:text-white"
-            inactiveColor="text-black/50 hover:text-black dark:text-white/50 dark:hover:text-white"
+            inactiveColor="text-black/75 hover:text-black dark:text-white/75 dark:hover:text-white"
           >
             {item.label}
           </Button>
@@ -97,7 +98,7 @@ const Layout = ({ children }) => {
             link={item.link}
             type="link"
             activeColor="text-white dark:text-black"
-            inactiveColor="text-white/50 hover:text-white dark:text-black/50 dark:hover:text-black"
+            inactiveColor="text-white/75 hover:text-white dark:text-black/75 dark:hover:text-black"
           >
             {item.label}
           </Button>
@@ -118,7 +119,7 @@ const Layout = ({ children }) => {
         <div className="flex px-6 md:px-36 py-2 justify-between items-center ">
           <nav>
             <Link href="/">
-              <a>
+              <a aria-label="favicon">
                 <NextImage image={favicon} className="w-8 h-8" />
               </a>
             </Link>

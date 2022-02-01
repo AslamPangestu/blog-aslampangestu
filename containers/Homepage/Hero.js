@@ -21,6 +21,7 @@ const HeroSection = ({ data }) => {
               key={item._id}
               name={`${item.name}-link`}
               href={item.url}
+              aria-label={`${item.name}-link`}
               className="rounded text-red"
             >
               <FontAwesomeIcon icon={["fab", item.iconName]} size="lg" />
