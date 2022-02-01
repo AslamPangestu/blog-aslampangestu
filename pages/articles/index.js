@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 
 // import { fetchAPI } from "lib/api"
 
@@ -7,7 +7,8 @@ const Layout = dynamic(() => import("components/layout"))
 const Seo = dynamic(() => import("components/seo"))
 const WorkInProgress = dynamic(() => import("components/wip"))
 
-const Article = ({ articles }) => {
+// const Article = ({ articles }) => {
+const Article = () => {
   return (
     <>
       <Seo />
@@ -27,8 +28,8 @@ const Article = ({ articles }) => {
 //   }
 // }
 
-Article.propTypes = {
-  articles: PropTypes.array,
-}
+// Article.propTypes = {
+//   articles: PropTypes.array,
+// }
 
 export default Article
