@@ -13,7 +13,11 @@ module.exports = {
       yellow: "#facc15",
       green: "#22c55e",
     },
-    extend: {},
+    extend: {
+      spacing: {
+        33.5: "8.46rem",
+      },
+    },
   },
   plugins: [],
 }

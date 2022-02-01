@@ -11,6 +11,8 @@ import {
   faDesktop,
   faTimes,
   faGlobe,
+  faCog,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
@@ -39,7 +41,9 @@ library.add(
   faMobileAlt,
   faDesktop,
   faTimes,
-  faGlobe
+  faGlobe,
+  faCog,
+  faBars
 )
 
 const MyApp = ({ Component, pageProps }) => {
