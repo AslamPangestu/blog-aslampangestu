@@ -7,14 +7,18 @@ const Image = ({ image, className, imageClass, objectFit, layout }) => {
   const src = () => {
     return getMediaURL(image.url)
   }
+  const translateSize = () => {
+    if (layout === "fill") return { width: null, height: null }
+    return { width: image.width, height: image.height }
+  }
 
   return (
     <div className={className}>
       <NextImage
         className={imageClass}
         layout={layout}
-        width={image.width}
-        height={image.height}
+        width={translateSize().width}
+        height={translateSize().height}
         objectFit={objectFit}
         src={src()}
         alt={image.alternativeText || ""}

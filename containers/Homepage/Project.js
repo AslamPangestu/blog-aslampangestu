@@ -31,11 +31,11 @@ const ProjectSection = ({ data }) => {
   const ProjectModal = ({ onClose }) => {
     const SUBHEADERS = [
       { label: "Client", value: modalData.clientName },
-      { label: "Role", value: modalData.projectRole.name },
       {
-        label: "Work",
+        label: "As",
         value: `${modalData.workPlace.name} (${modalData.projectCategory.name})`,
       },
+      { label: "Role", value: modalData.projectRole.name },
     ]
     return (
       <Modal onClose={onClose} showClose={true}>
@@ -125,7 +125,7 @@ const ProjectSection = ({ data }) => {
   return (
     <div className="flex flex-col py-11">
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
-        Projects
+        Latest Project
       </h1>
       <div className="flex flex-row justify-center flex-wrap py-4">
         {data.map((item) => (

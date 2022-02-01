@@ -5,12 +5,23 @@ import PropTypes from "prop-types"
 import Button from "./button"
 
 const Layout = ({ children }) => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
   const NAVS = [
     { name: "home", link: "/", label: "Home" },
     { name: "note", link: "/articles", label: "Note" },
   ]
-  const DarkModeButton = () => {
+
+  const showMenu = () => {
+    setShowMobileMenu(!showMobileMenu)
+  }
+
+  const DarkModeButton = ({ className }) => {
     const [darkModeIcon, setDarkModeIcon] = useState("")
+    let classNames = [
+      "rounded hover:bg-black/10 dark:hover:bg-white/10 text-yellow",
+      className,
+    ]
+    const joinClassName = classNames.join(" ")
     const setUIMode = () => {
       const key = "theme"
       const theme = localStorage.getItem(key)
@@ -44,41 +55,77 @@ const Layout = ({ children }) => {
     return (
       <Button
         name="darkMode"
-        className="rounded hover:bg-black/10 dark:hover:bg-white/10 text-yellow"
+        className={joinClassName}
         icon={darkModeIcon}
         onClick={setUIMode}
       />
     )
   }
-  const NavButton = ({ name, link, label }) => (
-    <Button
-      name={name}
-      link={link}
-      type="link"
-      activeColor="text-black dark:text-white"
-      inactiveColor="text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white"
-    >
-      {label}
-    </Button>
+  const MainNav = () => (
+    <>
+      <nav className="hidden md:flex items-center space-x-4">
+        {NAVS.map((item) => (
+          <Button
+            key={item.name}
+            name={item.name}
+            link={item.link}
+            type="link"
+            activeColor="text-black dark:text-white"
+            inactiveColor="text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white"
+          >
+            {item.label}
+          </Button>
+        ))}
+      </nav>
+      <nav className="hidden md:flex">
+        <DarkModeButton />
+      </nav>
+    </>
+  )
+  const MobileNav = () => (
+    <div className="flex flex-col bg-black dark:bg-white">
+      <nav className="flex w-full flex-col my-2">
+        {NAVS.map((item) => (
+          <Button
+            className="w-full"
+            key={item.name}
+            name={item.name}
+            link={item.link}
+            type="link"
+            activeColor="text-white dark:text-black"
+            inactiveColor="text-white/80 hover:text-white dark:text-black/80 dark:hover:text-black"
+          >
+            {item.label}
+          </Button>
+        ))}
+      </nav>
+      <div className="mx-4">
+        <div className="bg-white dark:bg-black w-full h-px" />
+      </div>
+      <nav className="mx-4 my-2">
+        <DarkModeButton className="border border-white dark:border-black m-2" />
+      </nav>
+    </div>
   )
 
   return (
     <div className="bg-white dark:bg-black">
-      <header className="flex justify-between items-center px-36 py-2 sticky top-0 z-10 border-b border-black/10 dark:border-white/10 bg-opacity-60 backdrop-filter backdrop-blur-lg">
-        <nav>
-          <Link href="/">AP</Link>
-        </nav>
-        <nav className="flex items-center space-x-4">
-          {NAVS.map((item) => (
-            <NavButton
-              key={item.name}
-              name={item.name}
-              link={item.link}
-              label={item.label}
-            />
-          ))}
-        </nav>
-        <DarkModeButton />
+      <header className="sticky top-0 z-10 border-b border-black/10 dark:border-white/10 bg-opacity-60 backdrop-filter backdrop-blur-lg">
+        <div className="flex px-24 md:px-36 py-2 justify-between items-center ">
+          <nav>
+            <Link href="/">AP</Link>
+          </nav>
+          {/* MAIN NAV */}
+          <MainNav />
+          {/* MOBILE NAV */}
+          <Button
+            className="md:hidden hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white"
+            icon={showMobileMenu ? "times" : "bars"}
+            iconSize="lg"
+            onClick={showMenu}
+          />
+        </div>
+        {showMobileMenu && <MobileNav />}
       </header>
       <div className="px-36 py-4">{children}</div>
       <footer className="flex flex-row justify-center px-36 py-4 border-t border-black/10 dark:border-white/10">
