@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import PropTypes from "prop-types"
 
-import Button from "./button"
+import { GlobalContext } from "pages/_app"
+const Button = dynamic(() => import("components/button"))
+const NextImage = dynamic(() => import("components/image"))
 
 const Layout = ({ children }) => {
+  const { favicon } = useContext(GlobalContext)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const NAVS = [
     { name: "home", link: "/", label: "Home" },
@@ -71,7 +75,7 @@ const Layout = ({ children }) => {
             link={item.link}
             type="link"
             activeColor="text-black dark:text-white"
-            inactiveColor="text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white"
+            inactiveColor="text-black/50 hover:text-black dark:text-white/50 dark:hover:text-white"
           >
             {item.label}
           </Button>
@@ -93,7 +97,7 @@ const Layout = ({ children }) => {
             link={item.link}
             type="link"
             activeColor="text-white dark:text-black"
-            inactiveColor="text-white/80 hover:text-white dark:text-black/80 dark:hover:text-black"
+            inactiveColor="text-white/50 hover:text-white dark:text-black/50 dark:hover:text-black"
           >
             {item.label}
           </Button>
@@ -111,9 +115,13 @@ const Layout = ({ children }) => {
   return (
     <div className="bg-white dark:bg-black">
       <header className="sticky top-0 z-10 border-b border-black/10 dark:border-white/10 bg-opacity-60 backdrop-filter backdrop-blur-lg">
-        <div className="flex px-24 md:px-36 py-2 justify-between items-center ">
+        <div className="flex px-6 md:px-36 py-2 justify-between items-center ">
           <nav>
-            <Link href="/">AP</Link>
+            <Link href="/">
+              <a>
+                <NextImage image={favicon} className="w-8 h-8" />
+              </a>
+            </Link>
           </nav>
           {/* MAIN NAV */}
           <MainNav />
@@ -127,7 +135,7 @@ const Layout = ({ children }) => {
         </div>
         {showMobileMenu && <MobileNav />}
       </header>
-      <div className="px-36 py-4">{children}</div>
+      <div className="px-6 md:px-36 py-4">{children}</div>
       <footer className="flex flex-row justify-center px-36 py-4 border-t border-black/10 dark:border-white/10">
         <span className="text-black dark:text-white">
           ©{new Date().getFullYear()}

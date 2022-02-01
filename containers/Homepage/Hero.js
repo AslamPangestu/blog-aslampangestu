@@ -6,7 +6,7 @@ const NextImage = dynamic(() => import("components/image"))
 
 const HeroSection = ({ data }) => {
   return (
-    <div className="py-11 px-40">
+    <div className="py-11 lg:px-40">
       <div className="flex flex-col items-center my-2">
         <NextImage
           image={data.profileImage}

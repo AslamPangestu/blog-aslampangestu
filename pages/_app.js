@@ -52,7 +52,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href={getMediaURL(global.favicon)} />
+        <link rel="shortcut icon" href={getMediaURL(global.favicon.url)} />
       </Head>
       <GlobalContext.Provider value={global}>
         <TopProgressBar />

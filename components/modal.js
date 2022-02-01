@@ -35,7 +35,7 @@ const Modal = ({ children, onClose, showClose, canCloseOutside }) => {
             name="close"
             className="text-white/75 dark:text-black/75 absolute top-px right-px"
             icon="times"
-            iconSize="lg"
+            iconSize="2x"
             onClick={onClose}
           />
         )}

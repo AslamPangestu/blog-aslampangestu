@@ -1,7 +1,7 @@
 import NextImage from "next/image"
 import PropTypes from "prop-types"
 
-import { getMediaURL } from "../lib/media"
+import { getMediaURL } from "lib/media"
 
 const Image = ({ image, className, imageClass, objectFit, layout }) => {
   const src = () => {

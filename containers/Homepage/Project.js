@@ -81,7 +81,7 @@ const ProjectSection = ({ data }) => {
                 ))}
               </tbody>
             </table>
-            <p className="text-sm text-black/80 dark:text-white/80 text-justify">
+            <p className="text-sm text-black/80 dark:text-white/80 text-justify whitespace-pre-wrap">
               {modalData.description}
             </p>
           </div>

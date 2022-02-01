@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const SkillSection = ({ data }) => {
   const SkillItem = ({ icon, title, description }) => (
-    <div className="m-8 p-8 w-64">
+    <div className="m-2 lg:m-8 lg:p-8 lg:w-64">
       <span className="my-2 text-red">
         <FontAwesomeIcon icon={icon} size="4x" />
       </span>
@@ -20,7 +20,7 @@ const SkillSection = ({ data }) => {
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
         Skills
       </h1>
-      <div className="flex flex-row justify-center flex-wrap pt-4">
+      <div className="flex flex-row lg:justify-center flex-wrap pt-4">
         {data.map((item) => (
           <SkillItem
             key={item._id}
