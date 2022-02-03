@@ -11,7 +11,7 @@ const ProjectSection = ({ data }) => {
   const [modalData, setModalData] = useState(null)
 
   const projectYear = (start, end) => {
-    const yearEnd = end === "9999" ? "Now" : end
+    const yearEnd = end === 9999 ? "Now" : end
     return ` (${start} - ${yearEnd})`
   }
 
