@@ -11,7 +11,7 @@ const ProjectSection = ({ data }) => {
   const [modalData, setModalData] = useState(null)
 
   const projectYear = (start, end) => {
-    const yearEnd = !end ? "Now" : end
+    const yearEnd = end === "9999" ? "Now" : end
     return ` (${start} - ${yearEnd})`
   }
 
@@ -29,11 +29,17 @@ const ProjectSection = ({ data }) => {
   }
 
   const ProjectModal = ({ onClose }) => {
+    const ProjectAs = () => {
+      if (modalData.workPlace.name === "Personal") {
+        return modalData.projectCategory.name
+      }
+      return `${modalData.workPlace.name} (${modalData.projectCategory.name})`
+    }
     const SUBHEADERS = [
       { label: "Client", value: modalData.clientName },
       {
         label: "As",
-        value: `${modalData.workPlace.name} (${modalData.projectCategory.name})`,
+        value: ProjectAs(),
       },
       { label: "Role", value: modalData.projectRole.name },
     ]
