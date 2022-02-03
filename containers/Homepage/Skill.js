@@ -16,7 +16,7 @@ const SkillSection = ({ data }) => {
     </div>
   )
   return (
-    <div className="flex flex-col py-11">
+    <section id="skill" className="flex flex-col py-11">
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
         Skills
       </h1>
@@ -30,7 +30,7 @@ const SkillSection = ({ data }) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

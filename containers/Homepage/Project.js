@@ -123,7 +123,7 @@ const ProjectSection = ({ data }) => {
   }
 
   return (
-    <div className="flex flex-col py-11">
+    <section id="project" className="flex flex-col py-11">
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
         Latest Project
       </h1>
@@ -137,7 +137,7 @@ const ProjectSection = ({ data }) => {
         ))}
       </div>
       {modalData && <ProjectModal onClose={() => showModal()} />}
-    </div>
+    </section>
   )
 }
 
