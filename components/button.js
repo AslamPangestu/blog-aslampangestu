@@ -89,6 +89,7 @@ const Button = ({
   return (
     <button
       name={`${name}-button`}
+      aria-label={`${name}-button`}
       className={joinClassName}
       type={type}
       onClick={onClick}

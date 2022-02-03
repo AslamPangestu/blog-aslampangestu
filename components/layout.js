@@ -58,7 +58,6 @@ const Layout = ({ children }) => {
     }, [])
     return (
       <Button
-        aria-label="darkMode"
         name="darkMode"
         className={joinClassName}
         icon={darkModeIcon}
@@ -115,7 +114,10 @@ const Layout = ({ children }) => {
 
   return (
     <div className="bg-white dark:bg-black">
-      <header className="sticky top-0 z-10 border-b border-black/10 dark:border-white/10 bg-opacity-60 backdrop-filter backdrop-blur-lg">
+      <header
+        id="header"
+        className="sticky top-0 z-10 border-b border-black/10 dark:border-white/10 bg-opacity-60 backdrop-filter backdrop-blur-lg"
+      >
         <div className="flex px-6 md:px-36 py-2 justify-between items-center ">
           <nav>
             <Link href="/">
@@ -137,7 +139,10 @@ const Layout = ({ children }) => {
         {showMobileMenu && <MobileNav />}
       </header>
       <div className="px-6 md:px-36 py-4">{children}</div>
-      <footer className="flex flex-row justify-center px-36 py-4 border-t border-black/10 dark:border-white/10">
+      <footer
+        id="footer"
+        className="flex flex-row justify-center px-36 py-4 border-t border-black/10 dark:border-white/10"
+      >
         <span className="text-black dark:text-white">
           ©{new Date().getFullYear()}
           <strong> Muhammad Aslam Pangestu Idham</strong>
