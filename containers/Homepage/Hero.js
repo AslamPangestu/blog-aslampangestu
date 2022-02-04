@@ -28,12 +28,13 @@ const HeroSection = ({ data }) => {
             </a>
           ))}
         </span>
-        <span className="font-bold text-xl text-black dark:text-white">
+        <h1 className="font-bold text-2xl text-black dark:text-white">
           {data.fullname}
-        </span>
-        <span className="my-2 leading-relaxed text-black dark:text-white">
+        </h1>
+        <h2 className="text-lg text-black dark:text-white">{data.role}</h2>
+        <p className="my-2 leading-relaxed text-black dark:text-white">
           {data.description}
-        </span>
+        </p>
       </div>
     </section>
   )

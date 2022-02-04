@@ -32,6 +32,7 @@ export async function getStaticProps() {
     props: {
       hero: {
         fullname: response.homepage.fullName,
+        role: response.homepage.currentRole,
         description: response.homepage.description,
         profileImage: response.homepage.profileImage,
         contacts: response.contacts,
