@@ -6,6 +6,7 @@ const NextImage = dynamic(() => import("components/image"))
 const Card = dynamic(() => import("components/card"))
 const Modal = dynamic(() => import("components/modal"))
 const Button = dynamic(() => import("components/button"))
+const Carousel = dynamic(() => import("components/carousel"))
 
 const ProjectSection = ({ data }) => {
   const [modalData, setModalData] = useState(null)
@@ -60,7 +61,7 @@ const ProjectSection = ({ data }) => {
               {modalData.url && (
                 <Button
                   name="close"
-                  className="text-green hover:bg-black/10 dark:hover:bg-white/10  rounded-lg"
+                  className="text-green hover:bg-black/10 dark:hover:bg-white/10 rounded-lg"
                   icon="globe"
                   iconSize="lg"
                   link={modalData.url}
@@ -101,7 +102,7 @@ const ProjectSection = ({ data }) => {
 
     return (
       <Card
-        className="m-8 inline-block rounded-lg sm:max-w-lg w-72"
+        className="inline-block rounded-lg sm:max-w-lg w-72"
         onClick={onClick}
       >
         <div className="flex flex-col relative border-b border-black/25 dark:border-white/25">
@@ -133,15 +134,25 @@ const ProjectSection = ({ data }) => {
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
         Latest Project
       </h1>
-      <div className="flex flex-row justify-center flex-wrap py-4">
-        {data.map((item) => (
-          <ProjectItem
-            key={item._id}
-            data={item}
-            onClick={() => showModal(item)}
-          />
-        ))}
+      <div className="mt-12">
+        <Carousel>
+          {data.map((item) => (
+            <ProjectItem
+              key={item._id}
+              data={item}
+              onClick={() => showModal(item)}
+            />
+          ))}
+        </Carousel>
       </div>
+      <Button
+        name="allProject"
+        className="text-red hover:bg-black/10 dark:hover:bg-white/10 rounded-lg text-center mt-4"
+        link="/projects"
+        type="link"
+      >
+        See All Project
+      </Button>
       {modalData && <ProjectModal onClose={() => showModal()} />}
     </section>
   )

@@ -12,6 +12,7 @@ const Layout = ({ children }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const NAVS = [
     { name: "home", link: "/", label: "Home" },
+    { name: "project", link: "/projects", label: "Project" },
     { name: "note", link: "/articles", label: "Note" },
   ]
 

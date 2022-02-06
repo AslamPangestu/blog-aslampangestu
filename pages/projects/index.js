@@ -7,8 +7,8 @@ const Layout = dynamic(() => import("components/layout"))
 const Seo = dynamic(() => import("components/seo"))
 const WorkInProgress = dynamic(() => import("components/wip"))
 
-// const Articles = ({ articles }) => {
-const Articles = () => {
+// const Projects = ({ projects }) => {
+const Projects = () => {
   return (
     <>
       <Seo />
@@ -20,16 +20,16 @@ const Articles = () => {
 }
 
 // export const getStaticProps = async () => {
-//   const articles = await fetchAPI(`/articles`)
+//   const projects = await fetchAPI(`/projects`)
 
 //   return {
-//     props: { articles },
+//     props: { projects },
 //     revalidate: 1,
 //   }
 // }
 
-// Articles.propTypes = {
-//   articles: PropTypes.array,
+// Projects.propTypes = {
+//   projects: PropTypes.array,
 // }
 
-export default Articles
+export default Projects
