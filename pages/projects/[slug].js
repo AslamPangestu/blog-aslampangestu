@@ -3,11 +3,11 @@ import { fetchAPI } from "lib/api"
 import Layout from "components/layout"
 import Seo from "components/seo"
 
-const Project = ({ article }) => {
+const Project = ({ projects }) => {
   const seo = {
-    metaTitle: article.title,
-    metaDescription: article.description,
-    shareImage: article.image,
+    metaTitle: projects.title,
+    metaDescription: projects.description,
+    shareImage: projects.image,
     article: false,
   }
 
@@ -28,9 +28,9 @@ export const getStaticPaths = async () => {
   const projects = await fetchAPI("/projects")
 
   return {
-    paths: projects.map((article) => ({
+    paths: projects.map((projects) => ({
       params: {
-        slug: article.slug,
+        slug: projects.slug,
       },
     })),
     fallback: false,
@@ -41,7 +41,7 @@ export const getStaticProps = async ({ params }) => {
   const projects = await fetchAPI(`/projects?slug=${params.slug}`)
 
   return {
-    props: { article: projects[0] },
+    props: { projects: projects[0] },
     revalidate: 1,
   }
 }
