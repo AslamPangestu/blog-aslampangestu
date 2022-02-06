@@ -28,9 +28,9 @@ export const getStaticPaths = async () => {
   const articles = await fetchAPI("/articles")
 
   return {
-    paths: articles.map((article) => ({
+    paths: articles.map((item) => ({
       params: {
-        slug: article.slug,
+        slug: item.slug,
       },
     })),
     fallback: false,

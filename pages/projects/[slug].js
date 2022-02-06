@@ -28,9 +28,9 @@ export const getStaticPaths = async () => {
   const projects = await fetchAPI("/projects")
 
   return {
-    paths: projects.map((projects) => ({
+    paths: projects.map((item) => ({
       params: {
-        slug: projects.slug,
+        slug: item.slug,
       },
     })),
     fallback: false,
