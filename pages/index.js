@@ -25,7 +25,7 @@ const Home = ({ hero, projects, skills }) => {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const response = await fetchAPI("/homepage/all")
 
   return {

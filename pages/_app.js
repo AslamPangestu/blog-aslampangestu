@@ -2,6 +2,7 @@ import { createContext } from "react"
 import dynamic from "next/dynamic"
 import App from "next/app"
 import Head from "next/head"
+
 import { library } from "@fortawesome/fontawesome-svg-core"
 import {
   faSun,
