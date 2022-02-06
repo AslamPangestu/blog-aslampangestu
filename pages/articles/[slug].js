@@ -28,7 +28,7 @@ export const getStaticPaths = async () => {
   const articles = await fetchAPI("/articles")
 
   return {
-    paths: articles.map((item) => ({
+    paths: articles.data.map((item) => ({
       params: {
         slug: item.slug,
       },
@@ -41,7 +41,7 @@ export const getStaticProps = async ({ params }) => {
   const articles = await fetchAPI(`/articles?slug=${params.slug}`)
 
   return {
-    props: { article: articles[0] },
+    props: { article: articles.data[0] },
     revalidate: 1,
   }
 }
