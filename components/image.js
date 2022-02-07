@@ -9,7 +9,7 @@ const Image = ({ image, className, imageClass, objectFit, layout, format }) => {
       if (format === "default") {
         return image.url
       }
-      return image.formats[format]
+      return image.formats[format].url
     }
     return getMediaURL(imageURL())
   }
