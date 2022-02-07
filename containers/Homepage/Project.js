@@ -48,7 +48,7 @@ const ProjectSection = ({ data }) => {
       <Modal onClose={onClose} showClose={true}>
         <div className="bg-white dark:bg-black relative">
           <div className="flex flex-col border-b border-black/25 dark:border-white/25">
-            <NextImage image={modalData.image} format="small" />
+            <NextImage image={modalData.image} format="large" />
           </div>
           <div className="p-4">
             <div className="flex flex-row justify-between items-center">
@@ -109,7 +109,7 @@ const ProjectSection = ({ data }) => {
             className="relative h-72"
             layout="fill"
             objectFit="cover"
-            format="thumbnail"
+            format="medium"
           />
         </div>
         <div className="p-4">
