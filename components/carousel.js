@@ -1,51 +1,51 @@
-import dynamic from "next/dynamic"
 import PropTypes from "prop-types"
 
-import { slidesToShowPlugin, arrowsPlugin } from "@brainhubeu/react-carousel"
-const BrainhubeuCarousel = dynamic(() => import("@brainhubeu/react-carousel"), {
-  ssr: false,
-})
-
-const Button = dynamic(() => import("components/button"))
+import Slider from "react-slick"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Carousel = ({ children }) => {
-  const CustomArrow = ({ position }) => {
-    const icon = position === "left" ? "chevron-left" : "chevron-right"
+  const CustomArrow = (props) => {
+    const { className, onClick } = props
+    const icon = className.includes("slick-prev")
+      ? "chevron-left"
+      : "chevron-right"
+    const joinClassName = `${className} rounded-full hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white`
     return (
-      <Button
-        name={`${position}Arrow`}
-        className="rounded-full hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white"
-        icon={icon}
-        iconSize="sm"
-      />
+      <div className={joinClassName} onClick={onClick}>
+        <FontAwesomeIcon icon={icon} size="lg" />
+      </div>
     )
   }
-
-  return (
-    <>
-      <BrainhubeuCarousel
-        plugins={[
-          "infinite",
-          {
-            resolve: slidesToShowPlugin,
-            options: {
-              numberOfSlides: 3,
-            },
-          },
-          {
-            resolve: arrowsPlugin,
-            options: {
-              arrowLeft: <CustomArrow position="left" />,
-              arrowRight: <CustomArrow position="right" />,
-              addArrowClickHandler: true,
-            },
-          },
-        ]}
-      >
-        {children}
-      </BrainhubeuCarousel>
-    </>
-  )
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    nextArrow: <CustomArrow />,
+    prevArrow: <CustomArrow />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: false,
+          infinite: false,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          infinite: false,
+        },
+      },
+    ],
+  }
+  return <Slider {...settings}>{children}</Slider>
 }
 
 Carousel.propTypes = {

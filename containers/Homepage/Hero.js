@@ -32,9 +32,13 @@ const HeroSection = ({ data }) => {
           {data.fullname}
         </h1>
         <h2 className="text-lg text-black dark:text-white">{data.role}</h2>
-        <p className="my-2 leading-relaxed text-black dark:text-white">
-          {data.description}
-        </p>
+        <div className="flex flex-row 2xl:justify-center">
+          <div />
+          <p className="my-2 leading-relaxed text-black dark:text-white max-w-4xl">
+            {data.description}
+          </p>
+          <div />
+        </div>
       </div>
     </section>
   )

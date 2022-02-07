@@ -12,7 +12,6 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@brainhubeu/react-carousel": "^2.0.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
@@ -24,7 +23,9 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-markdown": "^7.1.0"
+    "react-markdown": "^7.1.0",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1"
   },
   "license": "MIT",
   "devDependencies": {

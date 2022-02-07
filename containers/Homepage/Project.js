@@ -101,15 +101,12 @@ const ProjectSection = ({ data }) => {
     const { image, title, clientName } = data
 
     return (
-      <Card
-        className="inline-block rounded-lg sm:max-w-lg w-72"
-        onClick={onClick}
-      >
+      <Card className="rounded-lg mx-4" onClick={onClick}>
         <div className="flex flex-col relative border-b border-black/25 dark:border-white/25">
           <NextImage
             image={image}
             imageClass="rounded-t-lg"
-            className="w-72 h-72"
+            className="relative h-72"
             layout="fill"
             objectFit="cover"
           />
@@ -134,16 +131,18 @@ const ProjectSection = ({ data }) => {
       <h1 className="font-bold text-4xl text-black dark:text-white text-center">
         Latest Project
       </h1>
-      <div className="mt-12">
-        <Carousel>
-          {data.map((item) => (
-            <ProjectItem
-              key={item._id}
-              data={item}
-              onClick={() => showModal(item)}
-            />
-          ))}
-        </Carousel>
+      <div className="flex flex-row lg:justify-center mt-12">
+        <div className="max-w-4xl">
+          <Carousel>
+            {data.map((item) => (
+              <ProjectItem
+                key={item._id}
+                data={item}
+                onClick={() => showModal(item)}
+              />
+            ))}
+          </Carousel>
+        </div>
       </div>
       <Button
         name="allProject"
