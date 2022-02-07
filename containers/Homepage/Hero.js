@@ -12,6 +12,7 @@ const HeroSection = ({ data }) => {
           image={data.profileImage}
           imageClass="rounded-lg"
           className="w-56 h-56"
+          format="thumbnail"
         />
       </div>
       <div className="flex flex-col items-center text-center">
