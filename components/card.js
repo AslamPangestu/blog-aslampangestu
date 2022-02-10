@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 
 const Card = ({ children, className, onClick }) => {
   let classNames = [
-    "border border-black/25 dark:border-white/25 cursor-pointer",
+    "cursor-pointer border border-black/25 dark:border-white/25",
     className,
   ]
   const joinClassName = classNames.join(" ")

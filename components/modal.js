@@ -12,20 +12,20 @@ const Modal = ({ children, onClose, showClose, canCloseOutside }) => {
   }
   return (
     <div
-      className="fixed z-50 inset-0 overflow-y-auto"
+      className="fixed inset-0 z-50 overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
-      <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div className="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div
-          className="fixed inset-0 bg-black/75 dark:bg-white/75 transition-opacity"
+          className="fixed inset-0 bg-black/75 transition-opacity dark:bg-white/75"
           aria-hidden="true"
           onClick={closeOutside}
         />
         {/* This element is to trick the browser into centering the modal contents. */}
         <span
-          className="hidden sm:inline-block sm:align-middle sm:h-screen"
+          className="hidden sm:inline-block sm:h-screen sm:align-middle"
           aria-hidden="true"
         >
           &#8203;
@@ -33,13 +33,13 @@ const Modal = ({ children, onClose, showClose, canCloseOutside }) => {
         {showClose && (
           <Button
             name="close"
-            className="text-white/75 dark:text-black/75 absolute top-px right-px"
+            className="absolute top-px right-px text-white/75 dark:text-black/75"
             icon="times"
             iconSize="2x"
             onClick={onClose}
           />
         )}
-        <div className="inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+        <div className="inline-block transform overflow-hidden rounded-lg text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:align-middle">
           {children}
         </div>
       </div>

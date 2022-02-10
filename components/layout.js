@@ -68,7 +68,7 @@ const Layout = ({ children }) => {
   }
   const MainNav = () => (
     <>
-      <nav className="hidden md:flex items-center space-x-4">
+      <nav className="hidden items-center space-x-4 md:flex">
         {NAVS.map((item) => (
           <Button
             key={item.name}
@@ -89,7 +89,7 @@ const Layout = ({ children }) => {
   )
   const MobileNav = () => (
     <div className="flex flex-col bg-black dark:bg-white">
-      <nav className="flex w-full flex-col my-2">
+      <nav className="my-2 flex w-full flex-col">
         {NAVS.map((item) => (
           <Button
             className="w-full"
@@ -105,10 +105,10 @@ const Layout = ({ children }) => {
         ))}
       </nav>
       <div className="mx-4">
-        <div className="bg-white dark:bg-black w-full h-px" />
+        <div className="h-px w-full bg-white dark:bg-black" />
       </div>
       <nav className="mx-4 my-2">
-        <DarkModeButton className="border border-white dark:border-black m-2" />
+        <DarkModeButton className="m-2 border border-white dark:border-black" />
       </nav>
     </div>
   )
@@ -117,13 +117,13 @@ const Layout = ({ children }) => {
     <div className="bg-white dark:bg-black">
       <header
         id="header"
-        className="sticky top-0 z-10 border-b border-black/10 dark:border-white/10 bg-opacity-60 backdrop-filter backdrop-blur-lg"
+        className="sticky top-0 z-10 border-b border-black/10 bg-opacity-60 backdrop-blur-lg backdrop-filter dark:border-white/10"
       >
-        <div className="flex px-6 md:px-36 py-2 justify-between items-center ">
+        <div className="flex items-center justify-between px-6 py-2 md:px-36 ">
           <nav>
             <Link href="/">
               <a aria-label="favicon">
-                <NextImage image={favicon} className="w-8 h-8" />
+                <NextImage image={favicon} className="h-8 w-8" />
               </a>
             </Link>
           </nav>
@@ -131,7 +131,7 @@ const Layout = ({ children }) => {
           <MainNav />
           {/* MOBILE NAV */}
           <Button
-            className="md:hidden hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white"
+            className="text-black hover:bg-black/10 dark:text-white dark:hover:bg-white/10 md:hidden"
             icon={showMobileMenu ? "times" : "bars"}
             iconSize="lg"
             onClick={showMenu}
@@ -139,10 +139,10 @@ const Layout = ({ children }) => {
         </div>
         {showMobileMenu && <MobileNav />}
       </header>
-      <div className="px-6 md:px-36 py-4">{children}</div>
+      <main className="px-6 py-4 md:px-36">{children}</main>
       <footer
         id="footer"
-        className="flex flex-row justify-center px-36 py-4 border-t border-black/10 dark:border-white/10"
+        className="flex flex-row justify-center border-t border-black/10 px-36 py-4 dark:border-white/10"
       >
         <span className="text-black dark:text-white">
           ©{new Date().getFullYear()}

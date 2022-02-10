@@ -46,13 +46,13 @@ const ProjectSection = ({ data }) => {
     ]
     return (
       <Modal onClose={onClose} showClose={true}>
-        <div className="bg-white dark:bg-black relative">
+        <div className="relative bg-white dark:bg-black">
           <div className="flex flex-col border-b border-black/25 dark:border-white/25">
             <NextImage image={modalData.image} format="large" />
           </div>
           <div className="p-4">
-            <div className="flex flex-row justify-between items-center">
-              <h2 className="font-bold text-xl text-black dark:text-white">
+            <div className="flex flex-row items-center justify-between">
+              <h2 className="text-xl font-bold text-black dark:text-white">
                 {modalData.title}
                 <span className="text-xs text-black/80 dark:text-white/80">
                   {projectYear(modalData.yearStart, modalData.yearEnd)}
@@ -61,7 +61,7 @@ const ProjectSection = ({ data }) => {
               {modalData.url && (
                 <Button
                   name="close"
-                  className="text-green hover:bg-black/10 dark:hover:bg-white/10 rounded-lg"
+                  className="rounded-lg text-green hover:bg-black/10 dark:hover:bg-white/10"
                   icon="globe"
                   iconSize="lg"
                   link={modalData.url}
@@ -78,7 +78,7 @@ const ProjectSection = ({ data }) => {
                     <td className="text-sm font-bold text-black/80 dark:text-white/80">
                       {item.label}
                     </td>
-                    <td className="text-sm text-black/80 dark:text-white/80 px-2">
+                    <td className="px-2 text-sm text-black/80 dark:text-white/80">
                       :
                     </td>
                     <td className="text-sm text-black/80 dark:text-white/80">
@@ -88,7 +88,7 @@ const ProjectSection = ({ data }) => {
                 ))}
               </tbody>
             </table>
-            <p className="text-sm text-black/80 dark:text-white/80 text-justify whitespace-pre-wrap">
+            <p className="whitespace-pre-wrap text-justify text-sm text-black/80 dark:text-white/80">
               {modalData.description}
             </p>
           </div>
@@ -101,8 +101,8 @@ const ProjectSection = ({ data }) => {
     const { image, title, clientName } = data
 
     return (
-      <Card className="rounded-lg mx-4" onClick={onClick}>
-        <div className="flex flex-col relative border-b border-black/25 dark:border-white/25">
+      <Card className="mx-4 rounded-lg" onClick={onClick}>
+        <div className="relative flex flex-col border-b border-black/25 dark:border-white/25">
           <NextImage
             image={image}
             imageClass="rounded-t-lg"
@@ -113,7 +113,7 @@ const ProjectSection = ({ data }) => {
           />
         </div>
         <div className="p-4">
-          <h2 className="font-bold text-xl text-black dark:text-white">
+          <h2 className="text-xl font-bold text-black dark:text-white">
             {title}
             <span className="text-xs text-black/80 dark:text-white/80">
               {projectYear(data.yearStart, data.yearEnd)}
@@ -129,11 +129,11 @@ const ProjectSection = ({ data }) => {
 
   return (
     <section id="project" className="flex flex-col py-11">
-      <h1 className="font-bold text-4xl text-black dark:text-white text-center">
+      <h1 className="text-center text-4xl font-bold text-black dark:text-white">
         Latest Project
       </h1>
-      <div className="flex flex-row lg:justify-center mt-12">
-        <div className="max-w-4xl">
+      <div className="mt-12 lg:flex lg:flex-row lg:justify-center">
+        <div className="lg:max-w-4xl">
           <Carousel>
             {data.map((item) => (
               <ProjectItem
@@ -147,7 +147,7 @@ const ProjectSection = ({ data }) => {
       </div>
       <Button
         name="allProject"
-        className="text-red hover:bg-black/10 dark:hover:bg-white/10 rounded-lg text-center mt-4"
+        className="mt-4 rounded-lg text-center text-red hover:bg-black/10 dark:hover:bg-white/10"
         link="/projects"
         type="link"
       >

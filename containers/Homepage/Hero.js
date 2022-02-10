@@ -7,11 +7,11 @@ const NextImage = dynamic(() => import("components/image"))
 const HeroSection = ({ data }) => {
   return (
     <section id="hero" className="py-11 lg:px-40">
-      <div className="flex flex-col items-center my-2">
+      <div className="my-2 flex flex-col items-center">
         <NextImage
           image={data.profileImage}
           imageClass="rounded-lg"
-          className="w-56 h-56"
+          className="h-56 w-56"
           format="medium"
         />
       </div>
@@ -29,13 +29,13 @@ const HeroSection = ({ data }) => {
             </a>
           ))}
         </span>
-        <h1 className="font-bold text-2xl text-black dark:text-white">
+        <h1 className="text-2xl font-bold text-black dark:text-white">
           {data.fullname}
         </h1>
         <h2 className="text-lg text-black dark:text-white">{data.role}</h2>
         <div className="flex flex-row 2xl:justify-center">
           <div />
-          <p className="my-2 leading-relaxed text-black dark:text-white max-w-4xl">
+          <p className="my-2 max-w-4xl leading-relaxed text-black dark:text-white">
             {data.description}
           </p>
           <div />
