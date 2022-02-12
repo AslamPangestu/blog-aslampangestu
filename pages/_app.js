@@ -16,8 +16,15 @@ import {
   faBars,
   faChevronLeft,
   faChevronRight,
+  faEnvelope,
+  faTasks,
+  faStickyNote,
 } from "@fortawesome/free-solid-svg-icons"
-import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons"
+import {
+  faLinkedin,
+  faInstagram,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons"
 
 import "assets/css/style.css"
 
@@ -48,7 +55,11 @@ library.add(
   faCog,
   faBars,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faEnvelope,
+  faTasks,
+  faStickyNote,
+  faGithub
 )
 
 const MyApp = ({ Component, pageProps }) => {
